@@ -17,11 +17,8 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/index URL 요령");
 		//model 호출
-		this.employeesDao = new EmployeesDao();
+		employeesDao = new EmployeesDao();
 		int employeesRowCount = employeesDao.selectEmployeesCount();
-		//WEB-INF/views/index.jsp
-		//RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/index.jsp");
-		//rd.forward.(request,response); 
 		//request Attribute안에 값을 담아 보냄
 		request.setAttribute("employeesRowCount", employeesRowCount);
 		
