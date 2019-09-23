@@ -29,7 +29,7 @@ public class EmployeesDao {
 			//오류검사
 			try {//db접속 + 쿼리문 입력,실행
 				Class.forName("org.mariadb.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java123");
+				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
 				stmt = conn.prepareStatement(sql);
 				rs = stmt.executeQuery();
 					//employees에 값을 set
@@ -53,7 +53,7 @@ public class EmployeesDao {
 					conn.close();
 				}catch(Exception e) {
 					e.printStackTrace();
-				}
+				}System.out.println("list>>"+list);
 			}
 		//list리턴
 		return list;

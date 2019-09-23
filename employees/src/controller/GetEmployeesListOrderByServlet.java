@@ -20,11 +20,13 @@ public class GetEmployeesListOrderByServlet extends HttpServlet {
 		//order 받아오기
 		EmployeesDao employeesDao = new EmployeesDao();
 		String order = request.getParameter("order");
+		System.out.println("servlet order:>>"+order);
 		//list에 return값을 복사
 		List<Employees> list =employeesDao.selectEmployeesListOrderBy(order);
+		System.out.println("Servlet list:>>"+list);
 		//request에 list를 담는다
 		request.setAttribute("list", list);
 		//jsp로 forward
-		request.getRequestDispatcher("/WEB-INF/views/emplyoees/employeesListOrderBy.jsp");
+		request.getRequestDispatcher("/WEB-INF/views/employees/employeesListOrderBy.jsp").forward(request, response);
 	}
 }

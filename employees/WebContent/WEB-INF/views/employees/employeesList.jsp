@@ -8,6 +8,9 @@
 </head>
 <body>
 		<h1>사원 목록</h1>
+		<div>
+			<a href="${pageContext.request.contextPath}">HOME</a>
+		</div>
 			<form method="get" action="<%=request.getContextPath()%>/employees/GetEmployeesListServlet">
 				<select name=limit>
 					<option value="10">10</option>

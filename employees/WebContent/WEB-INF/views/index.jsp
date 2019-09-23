@@ -7,6 +7,9 @@
 </head>
 <body>
 	<h1>Index</h1>
+		<div>
+			<a href="${pageContext.request.contextPath}">HOME</a>
+		</div>
 		
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a></li>

@@ -15,7 +15,6 @@ import model.EmployeesDao;
 public class IndexServlet extends HttpServlet {
 	private EmployeesDao employeesDao; //dao객체 선언
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("/index URL 요령");
 		//model 호출
 		employeesDao = new EmployeesDao();
 		int employeesRowCount = employeesDao.selectEmployeesCount();

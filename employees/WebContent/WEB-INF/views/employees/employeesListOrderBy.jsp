@@ -8,6 +8,9 @@
 </head>
 <body>
 	<h1>OrderBy</h1>
+		<div>
+			<a href="${pageContext.request.contextPath}">HOME</a>
+		</div>
 	<table border="1">
 		<thead>
 			<tr>
