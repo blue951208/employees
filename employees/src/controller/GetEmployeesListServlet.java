@@ -15,7 +15,7 @@ import vo.Employees;
 /**
  * Servlet implementation class GetEmployeesListServlet
  */
-@WebServlet("/employees/GetEmployeesListServlet")
+@WebServlet("/employees/getEmployeesListServlet")
 public class GetEmployeesListServlet extends HttpServlet {
 		EmployeesDao employeesDao = null;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

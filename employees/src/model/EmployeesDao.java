@@ -10,6 +10,54 @@ import java.util.List;
 import vo.Employees;
 
 public class EmployeesDao {
+	//order값에 따라 desc,asc로 정렬 method
+	public List<Employees> selectEmployeesListOrderBy(String order){
+		//확인
+		System.out.println("method order>>"+order);
+		//list 생성
+		List<Employees> list = new ArrayList<Employees>();
+		//객체 생성,sql설정
+		String sql=null;
+		if(order.equals("asc")) {//order가asc일때는 오름차순 
+			sql = "select emp_no,last_name,first_name,birth_date,hire_date,gender from employees order by first_name asc limit 50";
+		}else if(order.equals("desc")) {
+			sql = "select emp_no,last_name,first_name,birth_date,hire_date,gender from employees order by first_name desc limit 50";
+		}System.out.println("sql==>"+sql);
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			//오류검사
+			try {//db접속 + 쿼리문 입력,실행
+				Class.forName("org.mariadb.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java123");
+				stmt = conn.prepareStatement(sql);
+				rs = stmt.executeQuery();
+					//employees에 값을 set
+					while(rs.next()) {
+						Employees employees = new Employees();
+						employees.setEmpNo(rs.getInt("emp_no"));
+						employees.setFirstName(rs.getString("first_name"));
+						employees.setLastName(rs.getString("last_name"));
+						employees.setBirthDate(rs.getString("birth_date"));
+						employees.setHireDate(rs.getString("hire_date"));
+						employees.setGender(rs.getString("gender"));
+						//list에 담기
+						list.add(employees);
+					}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					stmt.close();
+					conn.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		//list리턴
+		return list;
+	}
 	public List<Employees> selectEmployeesListByLimit(int limit){
 		System.out.println("para Limit >>>"+limit);
 		//list 객체 생성

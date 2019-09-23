@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.EmployeesDao;
 
-@WebServlet("/index")//url 처리(maping)
+@WebServlet({"/","/index"})//url 처리(maping)
 public class IndexServlet extends HttpServlet {
 	private EmployeesDao employeesDao; //dao객체 선언
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

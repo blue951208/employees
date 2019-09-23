@@ -16,7 +16,7 @@ import vo.Departments;
 /**
  * Servlet implementation class GetDepartmentsListServlet
  */
-@WebServlet("/departments/GetdepartmentsListServlet")//url지정
+@WebServlet("/departments/getDepartmentsList")//url지정
 public class GetDepartmentsListServlet extends HttpServlet {
 	DepartmentsDao departmentsDao = null;
  	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
