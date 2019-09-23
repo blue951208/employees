@@ -30,7 +30,7 @@ public class GetEmployeesListServlet extends HttpServlet {
 			//request에 값을 저장
 			request.setAttribute("list",list);
 			//jsp로 forward
-			request.getRequestDispatcher("/WEB-INF/views/employees/employeesList.jsp");
+			request.getRequestDispatcher("/WEB-INF/views/employees/employeesList.jsp").forward(request, response);
 	}
 
 }

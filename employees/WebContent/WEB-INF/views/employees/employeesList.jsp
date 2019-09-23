@@ -33,7 +33,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:foreach var="employees" items="${list}">
+				<c:forEach var="employees" items="${list}">
 					<tr>
 						<td>${employees.empNo}</td>
 						<td>${employees.firstName}</td>
@@ -42,7 +42,7 @@
 						<td>${employees.hireDate}</td>
 						<td>${employees.gender}</td>
 					</tr>
-				</c:foreach>
+				</c:forEach>
 			</tbody>
 		</table>
 </body>

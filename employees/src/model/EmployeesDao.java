@@ -96,7 +96,7 @@ public class EmployeesDao {
 						conn.close();
 					}catch(Exception e) {
 						e.printStackTrace();
-					}System.out.println(list);
+					}System.out.println("Dao list:>>"+list);
 				}
 		return list;
 	}
@@ -116,9 +116,10 @@ public class EmployeesDao {
 			if(rs.next()) {
 				//count에 행의수 복사
 				count=rs.getInt(1);
+				System.out.println("괄호안 count"+count);
 			}
 		}catch(Exception e){//자바의 변수 생명주기는 {}
-			
+			e.printStackTrace();
 		}finally {
 			try {//종료
 				rs.close();
@@ -126,7 +127,7 @@ public class EmployeesDao {
 				conn.close();
 			}catch(Exception e) {
 				e.printStackTrace();//서버에 오류 띄우기
-			}System.out.println(count);
+			}System.out.println("Dao Count:>>"+count);
 		}
 		return count;
 	}

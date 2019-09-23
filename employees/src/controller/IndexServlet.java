@@ -9,17 +9,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DepartmentsDao;
+import model.DeptEmpDao;
+import model.DeptManagerDao;
 import model.EmployeesDao;
+import model.SalariesDao;
+import model.TitlesDao;
 
 @WebServlet({"/","/index"})//url 처리(maping)
 public class IndexServlet extends HttpServlet {
 	private EmployeesDao employeesDao; //dao객체 선언
+	private DepartmentsDao departmentsDao;
+	private TitlesDao titlesDao;
+	private SalariesDao salariesDao;
+	private DeptEmpDao deptEmpDao;
+	private DeptManagerDao deptManagerDao;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//model 호출
 		employeesDao = new EmployeesDao();
-		int employeesRowCount = employeesDao.selectEmployeesCount();
+		departmentsDao = new DepartmentsDao();
+		titlesDao = new TitlesDao();
+		salariesDao = new SalariesDao();
+		deptEmpDao = new DeptEmpDao();
+		deptManagerDao = new DeptManagerDao();
+		
+			int employeesRowCount = employeesDao.selectEmployeesCount();
+			int departmentsRowCount = departmentsDao.selectDepartmentsCount();
+			int titlesRowCount = titlesDao.selectTitlesCount();
+			int salariesRowCount = salariesDao.selectSalariesCount();
+			int deptEmpRowCount = deptEmpDao.selectDeptEmpCount();
+			int deptManagerRowCount = deptManagerDao.selectDeptManagerCount();
 		//request Attribute안에 값을 담아 보냄
 		request.setAttribute("employeesRowCount", employeesRowCount);
+		request.setAttribute("departmentsRowCount", departmentsRowCount);
+		request.setAttribute("titlesRowCount", titlesRowCount);
+		request.setAttribute("salariesRowCount", salariesRowCount);
+		request.setAttribute("deptEmpRowCount", deptEmpRowCount);
+		request.setAttribute("deptManagerRowCount", deptManagerRowCount);
 		
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		//index.jsp로 포워딩

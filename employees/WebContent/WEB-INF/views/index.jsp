@@ -10,6 +10,32 @@
 		<div>
 			<a href="${pageContext.request.contextPath}">HOME</a>
 		</div>
+			<table border = "1">
+				<tr>
+					<td>부서 </td>
+					<td>${departmentsRowCount}</td>
+				</tr>
+				<tr>
+					<td>직원 </td>
+					<td>${employeesRowCount}</td>
+				</tr>
+				<tr>
+					<td>직책 </td>
+					<td>${titlesRowCount}</td>
+				</tr>
+				<tr>
+					<td>연봉</td>
+					<td>${salariesRowCount}</td>
+				</tr>
+				<tr>
+					<td>부서-직원</td>
+					<td>${deptEmpRowCount}</td>
+				</tr>
+				<tr>
+					<td>매니저</td>
+					<td>${deptManagerRowCount}</td>
+				</tr>
+			</table>
 		
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a></li>
