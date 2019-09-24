@@ -13,6 +13,64 @@ import db.DBHelper;
 import vo.Employees;
 
 public class EmployeesDao {
+	//max,min을 구한다
+	public int selectEmpNo(String str) {
+		int empNo=0;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = null;
+			if(str.equals("min")) {
+				sql = "select min(emp_no) from employees";
+			}else if(str.equals("max")){
+				sql = "select max(emp_no) from employees";
+			}
+			try {
+				conn = DBHelper.getConnection();
+				stmt = conn.prepareStatement(sql);
+				rs = stmt.executeQuery();
+					if(rs.next()) {
+						empNo = rs.getInt(1);
+					}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBHelper.close(rs, stmt, conn);
+			}
+		return empNo;
+	}
+	//begin~end사이에 List 를 보여준다
+	public List<Employees> selectEmployeesListBetween(int begin,int end) {
+		List<Employees> list = new ArrayList<Employees>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		//begin~end사이에 list 가져오기
+		String sql ="select emp_no,last_name,first_name,gender,hire_date,birth_date from employees where emp_no between ? and ? order by emp_no asc";
+			try {
+				conn = DBHelper.getConnection();
+				stmt = conn.prepareStatement(sql);
+					stmt.setInt(1, begin);
+					stmt.setInt(2, end);
+				rs = stmt.executeQuery();
+					while(rs.next()) {//employees에 필드값을 set
+						Employees employees = new Employees();
+						employees.setEmpNo(rs.getInt("emp_no"));
+						employees.setLastName(rs.getString("last_name"));
+						employees.setFirstName(rs.getString("first_name"));
+						employees.setGender(rs.getString("gender"));
+						employees.setHireDate(rs.getString("hire_date"));
+						employees.setBirthDate(rs.getString("birth_date"));
+						//list에 객체 employees에 저장된 값들을 저장
+						list.add(employees);
+					}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBHelper.close(rs, stmt, conn);
+			}
+		return list;
+	}
 	//gender에 수를 보여준다
 	public List<Map<String, Object>> selectEmployeesCountGroupByGender(){
 		//return을 위한 list 생성

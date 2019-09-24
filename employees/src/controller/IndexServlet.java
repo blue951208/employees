@@ -34,12 +34,16 @@ public class IndexServlet extends HttpServlet {
 		deptManagerDao = new DeptManagerDao();
 		
 			int employeesRowCount = employeesDao.selectEmployeesCount();
+			int minEmpNo = employeesDao.selectEmpNo("min");
+			int maxEmpNo = employeesDao.selectEmpNo("max");
 			int departmentsRowCount = departmentsDao.selectDepartmentsCount();
 			int titlesRowCount = titlesDao.selectTitlesCount();
 			int salariesRowCount = salariesDao.selectSalariesCount();
 			int deptEmpRowCount = deptEmpDao.selectDeptEmpCount();
 			int deptManagerRowCount = deptManagerDao.selectDeptManagerCount();
 		//request Attribute안에 값을 담아 보냄
+		request.setAttribute("minEmpNo", minEmpNo);
+		request.setAttribute("maxEmpNo", maxEmpNo);
 		request.setAttribute("employeesRowCount", employeesRowCount);
 		request.setAttribute("departmentsRowCount", departmentsRowCount);
 		request.setAttribute("titlesRowCount", titlesRowCount);

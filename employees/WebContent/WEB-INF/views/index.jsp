@@ -66,7 +66,9 @@
 			</li>
 		</ul>
 		<form method="post" action="${pageContext.request.contextPath}/employees/getEmployeesListBetween">
-					
+			<input type="number" name="begin">~<input type="number" name="end">
+			<button type="submit">사원 목록</button>
+			(${minEmpNo}~${maxEmpNo})
 		</form>
 </body>
 </html>
