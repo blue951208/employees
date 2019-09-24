@@ -63,16 +63,16 @@ public class EmployeesDao {
 		//list 객체 생성
 		List<Employees> list = new ArrayList<Employees>();
 		//객체 선언
+		String sql = "select emp_no,first_name,last_name,hire_date,birth_date,gender from employees limit ?";
+
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
-			String sql = "select emp_no,first_name,last_name,hire_date,birth_date,gender from employees limit ?";
 			//오류검사
-				try {
-					//db접속
-					Class.forName("org.mariadb.jdbc.Driver");
-					conn = DriverManager.getConnection("jdbc:mariadb//localhost:3306/employees","root","java1234");
-					stmt = conn.prepareStatement(sql);
+			try {//db접속 + 쿼리문 입력,실행
+				Class.forName("org.mariadb.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
+				stmt = conn.prepareStatement(sql);
 						//?값 입력
 					stmt.setInt(1, limit);
 					rs = stmt.executeQuery();
@@ -109,10 +109,10 @@ public class EmployeesDao {
 		ResultSet rs =null;
 			//오류검사,db접속
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb//localhost:3306/employees","root","java1234");
-			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
+				Class.forName("org.mariadb.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
+				stmt = conn.prepareStatement(sql);
+				rs = stmt.executeQuery();
 			if(rs.next()) {
 				//count에 행의수 복사
 				count=rs.getInt(1);

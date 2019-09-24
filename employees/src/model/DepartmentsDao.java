@@ -22,7 +22,7 @@ public class DepartmentsDao {
 		//오류검사,
 			try {
 				Class.forName("org.mariadb.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java123");
+				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
 				System.out.println(conn);
 				stmt = conn.prepareStatement(sql);
 				System.out.println(stmt);
@@ -63,7 +63,7 @@ public class DepartmentsDao {
 			//오류검사,db접속
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb//localhost:3306/employees","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
 			System.out.println(conn);
 			stmt = conn.prepareStatement(sql);
 			System.out.println(stmt);

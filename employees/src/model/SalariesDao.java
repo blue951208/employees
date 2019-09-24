@@ -43,13 +43,11 @@ public class SalariesDao {
 		int count=0;
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		ResultSet rs =null;
-			//오류검사,db접속
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb//localhost:3306/employees","root","java1234");
-			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
+		ResultSet rs = null;
+			try {
+				conn = DBHelper.getConnection();
+				stmt = conn.prepareStatement(sql);
+				rs = stmt.executeQuery();
 			if(rs.next()) {
 				//count에 행의수 복사
 				count=rs.getInt(1);
