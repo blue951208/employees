@@ -22,9 +22,12 @@ public class DepartmentsDao {
 		//오류검사,
 			try {
 				Class.forName("org.mariadb.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mariadb//localhost:3306/employees","root","java1234");
+				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java123");
+				System.out.println(conn);
 				stmt = conn.prepareStatement(sql);
+				System.out.println(stmt);
 				rs = stmt.executeQuery();
+				System.out.println(rs);
 					while(rs.next()) {
 						//departments 객체 생성
 						Departments departments = new Departments();
@@ -61,8 +64,11 @@ public class DepartmentsDao {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mariadb//localhost:3306/employees","root","java1234");
+			System.out.println(conn);
 			stmt = conn.prepareStatement(sql);
+			System.out.println(stmt);
 			rs = stmt.executeQuery();
+			System.out.println(rs);
 			if(rs.next()) {
 				//count에 행의수 복사
 				count=rs.getInt(1);
