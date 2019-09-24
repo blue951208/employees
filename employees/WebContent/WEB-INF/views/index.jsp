@@ -43,7 +43,8 @@
 			
 			<li><a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a></li>
 			<li><a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=desc">내림차순(limit50)</a></li>
-			<li><a href="${pageContext.request.contextPath}/titles/getTitlesListDistinct>">업무 목록(중복없음)</a></li>
+			<li><a href="${pageContext.request.contextPath}/titles/getTitlesListDistinct">업무 목록(중복없음)</a></li>
+			<li><a href="${pageContext.request.contextPath}/salaries/getSalariesStatistics">연봉통계</a>
 		</ul>
 		<div>
 			employees table total row Count : <%=request.getAttribute("employeesRowCount") %> 
