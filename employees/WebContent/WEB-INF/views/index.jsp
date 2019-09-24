@@ -64,6 +64,9 @@
 			<li>
 				<a href="${pageContext.request.contextPath}/employees/getEmployeesCountByGender">직원 수(성별)</a>
 			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/departments/getDepartmentCountByDeptNo">직원 수(부서별)</a>
+			</li>
 		</ul>
 		<form method="post" action="${pageContext.request.contextPath}/employees/getEmployeesListBetween">
 			<input type="number" name="begin">~<input type="number" name="end">

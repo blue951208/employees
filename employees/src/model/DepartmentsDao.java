@@ -5,10 +5,41 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import db.DBHelper;
 import vo.Departments;
 
 public class DepartmentsDao {
+	//group by having 이용 부서별 인원수 구하기
+	public List<Map<String, Object>> selectDepartmentsCountByDeptNo() {
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		//dep_emp,departments join,dept group by 
+		String sql = "select de.dept_no,d.dept_name,count(d.dept_no) as cnt from departments d inner join dept_emp de on d.dept_no=de.dept_no group by d.dept_no order by dept_no";
+			try {
+				conn = DBHelper.getConnection();
+				stmt = conn.prepareStatement(sql);
+				rs = stmt.executeQuery();
+				 while(rs.next()) {
+					 Map<String, Object> map = new HashMap<String, Object>();
+					 map.put("deptNo", rs.getString("de.dept_no"));
+					 map.put("deptName", rs.getString("d.dept_name"));
+					 map.put("cnt", rs.getInt("cnt"));
+					 list.add(map);
+				 }
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBHelper.close(rs, stmt, conn);
+			}
+		
+		return list;
+	}
 	//return 타입 List<Departments, 메소드 -부서리스트 보기
 	public List<Departments> selectDepartmentsDao(){
 		//list 객체 생성
