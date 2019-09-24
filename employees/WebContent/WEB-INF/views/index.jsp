@@ -10,6 +10,10 @@
 		<div>
 			<a href="${pageContext.request.contextPath}">HOME</a>
 		</div>
+		<div>
+			employees table total row Count : <%=request.getAttribute("employeesRowCount") %> 
+			or ${employeesRowCount}
+		</div>
 			<table border = "1">
 				<tr>
 					<td>부서 </td>
@@ -38,17 +42,31 @@
 			</table>
 		
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a></li>
-			<li><a href="${pageContext.request.contextPath}/employees/getEmployeesListServlet">사원 목록</a></li>
+			<li>
+				<a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/employees/getEmployeesListServlet">사원 목록</a>
+			</li>
 			
-			<li><a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a></li>
-			<li><a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=desc">내림차순(limit50)</a></li>
-			<li><a href="${pageContext.request.contextPath}/titles/getTitlesListDistinct">업무 목록(중복없음)</a></li>
-			<li><a href="${pageContext.request.contextPath}/salaries/getSalariesStatistics">연봉통계</a>
+			<li>
+				<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=desc">내림차순(limit50)</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/titles/getTitlesListDistinct">업무 목록(중복없음)</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/salaries/getSalariesStatistics">연봉통계</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/employees/getEmployeesCountByGender">직원 수(성별)</a>
+			</li>
 		</ul>
-		<div>
-			employees table total row Count : <%=request.getAttribute("employeesRowCount") %> 
-			or ${employeesRowCount}
-		</div>
+		<form method="post" action="${pageContext.request.contextPath}/employees/getEmployeesListBetween">
+					
+		</form>
 </body>
 </html>

@@ -5,11 +5,44 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import db.DBHelper;
 import vo.Employees;
 
 public class EmployeesDao {
+	//gender에 수를 보여준다
+	public List<Map<String, Object>> selectEmployeesCountGroupByGender(){
+		//return을 위한 list 생성
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+			//객체 생성
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			//gender와 gender에 수를 알려주는 쿼리문 작성
+			String sql = "select gender,count(gender) cnt from employees group by gender";
+				try {
+					conn = DBHelper.getConnection();
+					stmt = conn.prepareStatement(sql);
+					rs = stmt.executeQuery();
+						while(rs.next()) {
+							//결과값을 저장할 map생성
+							Map<String, Object> map = new HashMap<String, Object>();
+							//키값으로 저장
+							map.put("gender",rs.getString("gender"));
+							map.put("cnt",rs.getInt("cnt"));
+							//list에 map을 넣는다
+							list.add(map);
+						}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					DBHelper.close(rs, stmt, conn);
+				}
+		return list;
+	}
 	//order값에 따라 desc,asc로 정렬 method
 	public List<Employees> selectEmployeesListOrderBy(String order){
 		//확인
