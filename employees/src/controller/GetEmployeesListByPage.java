@@ -31,6 +31,7 @@ public class GetEmployeesListByPage extends HttpServlet {
 		int lastPage = employeesDao.selectLastPage(rowPerPage);
 		list = employeesDao.selectEmployeeListByPage(currentPage, rowPerPage);
 		
+		
 		//request에 list,lastPage,currentPage를 set
 		request.setAttribute("list", list);
 		request.setAttribute("currentPage", currentPage);

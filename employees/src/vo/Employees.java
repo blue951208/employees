@@ -45,12 +45,6 @@ public class Employees {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public int getEmpCurrentPage() {
-		return empCurrentPage;
-	}
-	public void setEmpCurrentPage(int empCurrentPage) {
-		this.empCurrentPage = empCurrentPage;
-	}
 	@Override
 	public String toString() {
 		return "employees [empNo=" + empNo + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate="

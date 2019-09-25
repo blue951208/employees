@@ -53,7 +53,6 @@ public class EmployeesDao {
 					employees.setFirstName(rs.getString("first_name"));
 					employees.setLastName(rs.getString("last_name"));
 					employees.setGender(rs.getString("gender"));
-					employees.setEmpCurrentPage(currentPage);
 					//list에 추가
 					list.add(employees);
 				}
