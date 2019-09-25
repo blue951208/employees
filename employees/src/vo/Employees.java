@@ -2,11 +2,13 @@ package vo;
 
 public class Employees {
 	private int empNo;
+	private int empCurrentPage;
 	private String firstName;
 	private String lastName;
 	private String birthDate;
 	private String hireDate;
 	private String gender;
+	
 	public int getEmpNo() {
 		return empNo;
 	}
@@ -42,6 +44,12 @@ public class Employees {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public int getEmpCurrentPage() {
+		return empCurrentPage;
+	}
+	public void setEmpCurrentPage(int empCurrentPage) {
+		this.empCurrentPage = empCurrentPage;
 	}
 	@Override
 	public String toString() {

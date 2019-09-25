@@ -20,21 +20,61 @@
 </head>
 <body>
 	<h1>GenderCount</h1>
-		<table border="1">
-			<thead>
-				<tr>
-					<th>성별</th>
-					<th>인원수</th>
-				</tr>
-			</thead>	
-			<tbody>
-				<c:forEach var="employees" items="${list}">
+		<div>
+				<a href="${pageContext.request.contextPath}">HOME</a>
+			</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<ul>
+					<li>
+						<a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListServlet">사원 목록</a>
+					</li>
+			
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=desc">내림차순(limit50)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/titles/getTitlesListDistinct">업무 목록(중복없음)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/salaries/getSalariesStatistics">연봉통계</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesCountByGender">직원 수(성별)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/departments/getDepartmentCountByDeptNo">직원 수(부서별)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
+					</li>
+				</ul>
+			</div>
+		<div class="col-sm-7 container">
+			<table border="1">
+				<thead>
 					<tr>
-						<td>${employees.gender}</td>
-						<td>${employees.cnt}</td>
+						<th>성별</th>
+						<th>인원수</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>	
+				<tbody>
+					<c:forEach var="employees" items="${list}">
+						<tr>
+							<td>${employees.gender}</td>
+							<td>${employees.cnt}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-1">
+		</div>
 </body>
 </html>

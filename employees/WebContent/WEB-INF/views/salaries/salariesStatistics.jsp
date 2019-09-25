@@ -19,27 +19,66 @@
 </head>
 <body>
 	<h1>연봉 통계</h1>
-		<table border="1">
-			<thead>
-				<tr>
-					<td>count</td>
-					<td>sum</td>
-					<td>avg</td>
-					<td>max</td>
-					<td>min</td>
-					<td>std</td>
-				</tr>
-			</thead>	
-			<tbody>
-				<tr>
-					<td>${map.count}</td>
-					<td>${map.sum}</td>
-					<td>${map.avg}</td>
-					<td>${map.max}</td>
-					<td>${map.min}</td>
-					<td>${map.std}</td>
-				</tr>
-			</tbody>
-		</table>
+		<div>
+				<a href="${pageContext.request.contextPath}">HOME</a>
+			</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<ul>
+					<li>
+						<a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListServlet">사원 목록</a>
+					</li>
+			
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=desc">내림차순(limit50)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/titles/getTitlesListDistinct">업무 목록(중복없음)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/salaries/getSalariesStatistics">연봉통계</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesCountByGender">직원 수(성별)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/departments/getDepartmentCountByDeptNo">직원 수(부서별)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
+					</li>
+				</ul>
+			</div>
+		<div class="col-sm-7 container">
+			<table border="1">
+				<thead>
+					<tr>
+						<td>count</td>
+						<td>sum</td>
+						<td>avg</td>
+						<td>max</td>
+						<td>min</td>
+						<td>std</td>
+					</tr>
+				</thead>	
+				<tbody>
+					<tr>
+						<td>${map.count}</td>
+						<td>${map.sum}</td>
+						<td>${map.avg}</td>
+						<td>${map.max}</td>
+						<td>${map.min}</td>
+						<td>${map.std}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-1"></div>
 </body>
 </html>
