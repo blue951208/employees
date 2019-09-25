@@ -13,6 +13,55 @@ import db.DBHelper;
 import vo.Employees;
 
 public class EmployeesDao {
+	//paging 때 lastPage를 가져온다
+	public int selectLastPage(int rowPerPage) {
+		//전체 행의 수를 구한다
+		EmployeesDao employeesDao = new EmployeesDao();
+		int endRow = employeesDao.selectEmployeesCount();
+		int lastPage=0;
+			if(endRow%rowPerPage!=0) {
+				lastPage = (endRow/rowPerPage)+1;
+			}else {
+				lastPage = endRow/rowPerPage;
+			}
+		return lastPage;
+	}
+	//paging,10개씩 list를 가져온다
+	public List<Employees> selectEmployeeListByPage(int currentPage,int rowPerPage){
+		//return할 list생성
+		List<Employees> list = new ArrayList<Employees>();
+		String sql = "select emp_no,gender,birth_date,hire_date,first_name,last_name from employees limit ?,?";
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		//오류검사
+			try {
+		//db접속
+				conn = DBHelper.getConnection();
+				stmt = conn.prepareStatement(sql);
+				int startRow = (currentPage-1)*rowPerPage;
+					System.out.println("Dao StartRow"+startRow);
+					stmt.setInt(1, startRow);
+					stmt.setInt(2, rowPerPage);
+				rs = stmt.executeQuery();
+				while(rs.next()) {
+					//employees객체 생성후 필드값을 set
+					Employees employees = new Employees();
+					employees.setEmpNo(rs.getInt("emp_no"));
+					employees.setBirthDate(rs.getString("birth_date"));
+					employees.setHireDate(rs.getString("hire_date"));
+					employees.setFirstName(rs.getString("first_name"));
+					employees.setLastName(rs.getString("last_name"));
+					employees.setGender(rs.getString("gender"));
+					//list에 추가
+					list.add(employees);
+				}
+			}catch(Exception e) {
+				//error발생시 error내용 출력
+				e.printStackTrace();
+			}
+		return list;
+	}
 	//max,min을 구한다
 	public int selectEmpNo(String str) {
 		int empNo=0;
