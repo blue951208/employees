@@ -13,6 +13,16 @@ import db.DBHelper;
 import vo.Employees;
 
 public class EmployeesDao {
+	//lastIndex 가져오기
+	public int selectLastIndex(int rowPerIndex) {
+		EmployeesDao employeesDao = new EmployeesDao();
+		int lastIndex=employeesDao.selectLastPage(rowPerIndex);
+		if(lastIndex%10!=0) {
+			lastIndex = lastIndex+1;
+		}
+		return lastIndex;
+	}
+	
 	//paging 때 lastPage를 가져온다
 	public int selectLastPage(int rowPerPage) {
 		//전체 행의 수를 구한다

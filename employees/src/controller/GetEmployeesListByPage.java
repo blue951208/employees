@@ -21,6 +21,7 @@ public class GetEmployeesListByPage extends HttpServlet {
 		//jsp에서 넘기 currentPage값을 받는다
 		int currentPage = 1;
 		int rowPerPage =10;
+		int rowPerIndex = 10;
 		//currentPage가 0이 아닐때 currentPage는 받아온 값을 복사한다.
 			if(request.getParameter("currentPage")!=null) {
 				currentPage=Integer.parseInt(request.getParameter("currentPage"));
