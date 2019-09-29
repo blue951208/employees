@@ -29,11 +29,10 @@ public class DeptEmpDao {
 		return lastPage;
 	}
 	//deptemp테이블에서 list가져오기
-	public List<Map<String,Object>> selectDeptEmpJoinList(){
+	public List<Map<String,Object>> selectDeptEmpJoinList(int rowPerPage,int currentPage){
 		//return값을 위한 객체 생성
 		List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
-		int rowPerPage = 10;	
-		int currentPage = 1;
+		
 		int startRow = (currentPage-1)*rowPerPage;
 		//객체 선언
 		Connection conn = null;
@@ -50,6 +49,7 @@ public class DeptEmpDao {
 				stmt.setInt(1, startRow);
 				stmt.setInt(2, rowPerPage);
 			rs = stmt.executeQuery();
+			System.out.println("Dao rs:>>"+rs);
 			while(rs.next()) {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("name", rs.getString("concat(e.first_name,'',e.last_name)"));

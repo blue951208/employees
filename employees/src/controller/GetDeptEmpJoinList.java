@@ -21,8 +21,20 @@ public class GetDeptEmpJoinList extends HttpServlet {
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		//메소드 호출을 위해 객체 생성
 		DeptEmpDao deptEmpDao = new DeptEmpDao();
-		list = deptEmpDao.selectDeptEmpJoinList();
-		//request에 list를 담는다
+		int rowPerPage=10;
+		int currentPage=1;
+			if(request.getParameter("currentPage")!=null) {
+				currentPage = Integer.parseInt(request.getParameter("currentPage"));
+				System.out.println("Servlet currentPage:>>"+currentPage);
+			}
+		//jsp로 넘길 lastPage 저장
+		int lastPage = deptEmpDao.selectLastPage(rowPerPage);
+		list = deptEmpDao.selectDeptEmpJoinList(rowPerPage,currentPage);
+		System.out.println("lastPage:>>"+lastPage);
+		System.out.println("list:>>"+list);
+		//request에 list,lastPage를 담는다
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("lastPage", lastPage);
 		request.setAttribute("list", list);
 		//jsp로 forward
 		request.getRequestDispatcher("/WEB-INF/views/deptEmp/deptEmpJoinList.jsp").forward(request, response);
