@@ -53,7 +53,7 @@
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">사원정보 (10개씩 페이징)</a>
+						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">부서별 인원</a>
 					</li>
 				</ul>
 			</div>

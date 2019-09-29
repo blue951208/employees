@@ -4,8 +4,68 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.tomcat.dbcp.dbcp2.PoolablePreparedStatement;
+
+import db.DBHelper;
 
 public class DeptEmpDao {
+	//lastPage 구하기
+	public int selectLastPage(int rowPerPage) {
+		//전체 행의 수를 가져오기 위해 메소드 호출
+		DeptEmpDao deptEmpDao = new DeptEmpDao();
+		int length = deptEmpDao.selectDeptEmpCount();
+		int lastPage = 0;
+		if(length%rowPerPage==0) {
+			lastPage = length/rowPerPage;
+		}else {
+			lastPage = (length/rowPerPage)+1;
+		}
+		
+		return lastPage;
+	}
+	//deptemp테이블에서 list가져오기
+	public List<Map<String,Object>> selectDeptEmpJoinList(){
+		//return값을 위한 객체 생성
+		List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
+		int rowPerPage = 10;	
+		int currentPage = 1;
+		int startRow = (currentPage-1)*rowPerPage;
+		//객체 선언
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "select concat(e.first_name,'',e.last_name),d.dept_name,de.from_date,de.to_date "
+				+ "from dept_emp de inner join employees e "
+				+"inner join departments d "
+				+"on de.dept_no=d.dept_no and e.emp_no=de.emp_no limit ?,?";
+			//db접속
+		try {
+			conn = DBHelper.getConnection();
+			stmt = conn.prepareStatement(sql);
+				stmt.setInt(1, startRow);
+				stmt.setInt(2, rowPerPage);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("name", rs.getString("concat(e.first_name,'',e.last_name)"));
+				map.put("deptName",rs.getString("d.dept_name"));
+				map.put("fromDate",rs.getString("from_date"));
+				map.put("toDate",rs.getString("to_date"));
+				list.add(map);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(rs, stmt, conn);
+		}
+		
+		return list;
+	}
 	public int selectDeptEmpCount() {//count를 리턴 메소드
 		//쿼리문 ,변수,객체 선언
 		final String sql="select count(*) from dept_emp";
