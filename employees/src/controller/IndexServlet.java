@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.DepartmentsDao;
 import model.DeptEmpDao;
@@ -25,6 +26,12 @@ public class IndexServlet extends HttpServlet {
 	private DeptEmpDao deptEmpDao;
 	private DeptManagerDao deptManagerDao;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//로그인 상태X,session값이 없을때
+		if(session.getAttribute("sessionEmpNo")==null) {
+		response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
 		//model 호출
 		employeesDao = new EmployeesDao();
 		departmentsDao = new DepartmentsDao();

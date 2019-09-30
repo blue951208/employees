@@ -13,6 +13,35 @@ import db.DBHelper;
 import vo.Employees;
 
 public class EmployeesDao {
+	//login 메소드 입력한 정보와 데이터베이스에 일치 여부 확인
+	public int login(Employees employees) {
+		//객체 선언
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		System.out.println("employees Dao:>>>"+employees);
+		int sessionEmpNo = 0;
+		//입력 받은 emp_no에 first_name,last_name을 가져온다
+		String sql = "select first_name,last_name,emp_no from employees where emp_no=?";
+			try {
+				conn = DBHelper.getConnection();
+				stmt = conn.prepareStatement(sql);
+					stmt.setInt(1, employees.getEmpNo());
+				rs = stmt.executeQuery();
+				rs.next();
+				//입력받은 값과 데이터베이스에 값과 동일한 경우
+					if((employees.getFirstName().equals(rs.getString("first_name")))&&employees.getLastName().equals(rs.getString("last_name"))) {
+						sessionEmpNo=employees.getEmpNo();
+					}System.out.println("sessionEmpNo dao:>>"+sessionEmpNo);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBHelper.close(rs,stmt,conn);
+			}
+		return sessionEmpNo;
+	}
+
+
 	//lastIndex 가져오기
 	public int selectLastIndex(int rowPerIndex) {
 		EmployeesDao employeesDao = new EmployeesDao();
