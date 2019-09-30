@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.EmployeesDao;
 import vo.Employees;
@@ -16,6 +17,12 @@ import vo.Employees;
 @WebServlet("/employees/getEmployeesListByPage")
 public class GetEmployeesListByPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//로그인 상태X,session값이 없을때
+		if(session.getAttribute("sessionEmpNo")==null) {
+		response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
 		//jsp에 넘길 list를 받기위해 list생성
 		List<Employees> list = new ArrayList<Employees>();
 		//jsp에서 넘기 currentPage값을 받는다

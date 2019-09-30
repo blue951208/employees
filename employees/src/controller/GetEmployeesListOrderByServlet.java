@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.EmployeesDao;
 import vo.Employees;
@@ -17,6 +18,12 @@ import vo.Employees;
 public class GetEmployeesListOrderByServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//로그인 상태X,session값이 없을때
+		if(session.getAttribute("sessionEmpNo")==null) {
+		response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
 		//order 받아오기
 		EmployeesDao employeesDao = new EmployeesDao();
 		String order = request.getParameter("order");

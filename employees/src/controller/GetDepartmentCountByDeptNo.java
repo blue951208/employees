@@ -10,12 +10,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.DepartmentsDao;
 
 @WebServlet("/departments/getDepartmentCountByDeptNo")
 public class GetDepartmentCountByDeptNo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//로그인 상태X,session값이 없을때
+		if(session.getAttribute("sessionEmpNo")==null) {
+		response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
 		//method 호출을 위한 객체 생성
 		DepartmentsDao departmentsDao = new DepartmentsDao();
 		//list에 return값을 복사하기 위해 생성
