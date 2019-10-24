@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.DepartmentsDao;
 import model.DeptEmpDao;
+import vo.Departments;
 
 
 @WebServlet("/deptEmp/getDeptEmpJoinList")
@@ -24,6 +26,15 @@ public class GetDeptEmpJoinList extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		//------------------------------------------------------------------------------
+		DepartmentsDao departmentsDao = new DepartmentsDao();
+ 		
+ 		//부서 list 객체 생성
+ 		List<Departments> dept = new ArrayList<Departments>();
+ 		//list에 departmentsDao 메소드에 리턴값인 list를 복사
+ 		dept = departmentsDao.selectDepartmentsDao();
+ 		System.out.println("dept :"+dept);
+		
 		//메소드에 리턴값으로 받을 list 생성
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		//메소드 호출을 위해 객체 생성
@@ -40,6 +51,8 @@ public class GetDeptEmpJoinList extends HttpServlet {
 		System.out.println("lastPage:>>"+lastPage);
 		System.out.println("list:>>"+list);
 		//request에 list,lastPage를 담는다
+		//request에 dept값을 저장
+ 		request.setAttribute("dept", dept);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("lastPage", lastPage);
 		request.setAttribute("list", list);

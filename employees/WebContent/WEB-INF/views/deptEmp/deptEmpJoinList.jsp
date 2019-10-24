@@ -56,6 +56,14 @@
 				</ul><!-- 메뉴  -->
 			</div>
 			<div class="col-sm-8">
+				<!-- 부서를 클릭할 수 있는 select -->
+				 <select>
+					<c:forEach var="dept" items="${dept}">
+						<option>${dept.deptName}</option>
+					</c:forEach>				
+					<div></div>
+				</select> 
+			
 					<table border="1">
 						<thead>
 							<tr>
