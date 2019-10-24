@@ -238,7 +238,7 @@ public class EmployeesDao {
 		return list;
 	}
 	public List<Employees> selectEmployeesListByLimit(int limit){
-		System.out.println("para Limit >>>"+limit);
+		System.out.println("DAO para Limit >>>"+limit);
 		//list 객체 생성
 		List<Employees> list = new ArrayList<Employees>();
 		//객체 선언

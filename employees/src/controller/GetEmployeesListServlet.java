@@ -16,22 +16,27 @@ import vo.Employees;
 /**
  * Servlet implementation class GetEmployeesListServlet
  */
-@WebServlet("/employees/getEmployeesListServlet")
+@WebServlet("/employees/GetEmployeesListServlet")
 public class GetEmployeesListServlet extends HttpServlet {
 		EmployeesDao employeesDao = null;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		//로그인 상태X,session값이 없을때
 		if(session.getAttribute("sessionEmpNo")==null) {
+			//login 페이지로 이동한다.
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
-		//객체생성\
+		//객체생성
 		employeesDao = new EmployeesDao();
 			int limit = 10;
+			
 				if(request.getParameter("limit")!=null) {
 					limit = Integer.parseInt(request.getParameter("limit"));
-				}System.out.println(limit);
+					System.out.println("para limit:"+limit);
+				}
+				System.out.println("limit : "+limit);
 			//list에 리턴값을 저장
 			List<Employees> list = employeesDao.selectEmployeesListByLimit(limit);
 			//request에 값을 저장

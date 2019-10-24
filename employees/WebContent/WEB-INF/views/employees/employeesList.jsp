@@ -22,7 +22,7 @@
 		<h1>사원 목록</h1>
 		<div>
 				<a href="${pageContext.request.contextPath}">HOME</a>
-			</div>
+			</div><!--  메인 페이지로 이동 -->
 		<div class="row">
 			<div class="col-sm-4">
 				<ul>
@@ -54,11 +54,11 @@
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
 					</li>
-				</ul>
+				</ul><!-- 메뉴  -->
 			</div>
 		<div class="col-sm-7 container">
 			<form method="get" action="<%=request.getContextPath()%>/employees/GetEmployeesListServlet">
-				<select name=limit>
+				<select name="limit">
 					<option value="10">10</option>
 					<option value="20">20</option>
 					<option value="30">30</option>
