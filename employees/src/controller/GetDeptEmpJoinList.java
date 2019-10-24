@@ -26,15 +26,20 @@ public class GetDeptEmpJoinList extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
-		//------------------------------------------------------------------------------
+		//------------------------------부서목록-------------------------------------------
 		DepartmentsDao departmentsDao = new DepartmentsDao();
- 		
+ 		String paraDeptName = "Customer Service";
+ 			if(request.getParameter("deptName")!=null) {
+ 				paraDeptName = request.getParameter("deptName");
+ 				System.out.println("para DeptName :"+paraDeptName);
+ 			}
  		//부서 list 객체 생성
  		List<Departments> dept = new ArrayList<Departments>();
  		//list에 departmentsDao 메소드에 리턴값인 list를 복사
  		dept = departmentsDao.selectDepartmentsDao();
  		System.out.println("dept :"+dept);
-		
+		//-------------------------직원목록-----------------------------------------------
+ 	
 		//메소드에 리턴값으로 받을 list 생성
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		//메소드 호출을 위해 객체 생성

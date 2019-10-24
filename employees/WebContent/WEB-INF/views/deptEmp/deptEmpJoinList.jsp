@@ -56,14 +56,16 @@
 				</ul><!-- 메뉴  -->
 			</div>
 			<div class="col-sm-8">
-				<!-- 부서를 클릭할 수 있는 select -->
-				 <select>
-					<c:forEach var="dept" items="${dept}">
-						<option>${dept.deptName}</option>
-					</c:forEach>				
-					<div></div>
-				</select> 
-			
+				<!-- 부서를 클릭할 수 있는 select,클릭하면 Servlet으로 데이터 전송 -->
+				<form method="get" action="<%=request.getContextPath()%>/deptEmp/getDeptEmpJoinList">
+					 <select name="deptName">
+						<c:forEach var="dept" items="${dept}">
+							<option value="${dept.deptName}">${dept.deptName}</option>
+						</c:forEach>				
+						<div></div>
+					</select> 
+					<button type="submit">Check</button>
+				</form>
 					<table border="1">
 						<thead>
 							<tr>
