@@ -85,10 +85,6 @@
 		<a href ="${pageContext.request.contextPath}/employees/getEmployeesListByPage?currentPage=${currentPage-1}">이전</a>
 	</c:if>
 	
-	<c:forEach var="i" begin="1" end="10">
-		<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage?currentPage=${i}"><c:out value="${i}">${i}</c:out></a>
-	</c:forEach>
-	
 	<!-- 페이지가 마지막 페이지보다 작으면 이전버튼 -->
 	<c:if test="${currentPage<lastPage}">
 		<a href ="${pageContext.request.contextPath}/employees/getEmployeesListByPage?currentPage=${currentPage+1}">다음</a>

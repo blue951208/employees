@@ -20,7 +20,7 @@
 </head>
 <body>
 		<h1>사원 목록</h1>
-		<div>
+			<div>
 				<a href="${pageContext.request.contextPath}">HOME</a>
 			</div><!--  메인 페이지로 이동 -->
 		<div class="row">
