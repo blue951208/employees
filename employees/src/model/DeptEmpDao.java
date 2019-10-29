@@ -29,7 +29,7 @@ public class DeptEmpDao {
 		return lastPage;
 	}
 	//deptemp테이블에서 list가져오기
-	public List<Map<String,Object>> selectDeptEmpJoinList(int rowPerPage,int currentPage){
+	public List<Map<String,Object>> selectDeptEmpJoinList(int rowPerPage,int currentPage,String paraDeptName){
 		//return값을 위한 객체 생성
 		List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
 		
@@ -41,13 +41,14 @@ public class DeptEmpDao {
 		String sql = "select concat(e.first_name,'',e.last_name),d.dept_name,de.from_date,de.to_date "
 				+ "from dept_emp de inner join employees e "
 				+"inner join departments d "
-				+"on de.dept_no=d.dept_no and e.emp_no=de.emp_no limit ?,?";
+				+"on de.dept_no=d.dept_no and e.emp_no=de.emp_no where d.dept_name=? limit ?,?";
 			//db접속
 		try {
 			conn = DBHelper.getConnection();
 			stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, startRow);
-				stmt.setInt(2, rowPerPage);
+				stmt.setString(1, paraDeptName);
+				stmt.setInt(2, startRow);
+				stmt.setInt(3, rowPerPage);
 			rs = stmt.executeQuery();
 			System.out.println("Dao rs:>>"+rs);
 			while(rs.next()) {

@@ -52,7 +52,7 @@ public class GetDeptEmpJoinList extends HttpServlet {
 			}
 		//jsp로 넘길 lastPage 저장
 		int lastPage = deptEmpDao.selectLastPage(rowPerPage);
-		list = deptEmpDao.selectDeptEmpJoinList(rowPerPage,currentPage);
+		list = deptEmpDao.selectDeptEmpJoinList(rowPerPage,currentPage,paraDeptName);
 		System.out.println("lastPage:>>"+lastPage);
 		System.out.println("list:>>"+list);
 		//request에 list,lastPage를 담는다
