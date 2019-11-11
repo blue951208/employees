@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import model.DepartmentsDao;
 
 @WebServlet("/departments/getDepartmentCountByDeptNo")
+//각 부서별 부서이름과 직원수를 출력
 public class GetDepartmentCountByDeptNo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

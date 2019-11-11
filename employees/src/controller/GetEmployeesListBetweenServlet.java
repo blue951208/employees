@@ -15,10 +15,11 @@ import model.EmployeesDao;
 import vo.Employees;
 
 
-@WebServlet("/employees/getEmployeesListBetween")
+@WebServlet("/employees/getEmployeesListBetween")//Servlet url지정, 
+//index 페이지에서 원하는 범위를 입력 후 그 범위내에 직원 리스트를 출력
 public class GetEmployeesListBetweenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();//session 생성
 		//로그인 상태X,session값이 없을때
 		if(session.getAttribute("sessionEmpNo")==null) {
 		response.sendRedirect(request.getContextPath()+"/login");
@@ -34,7 +35,7 @@ public class GetEmployeesListBetweenServlet extends HttpServlet {
 		list = employeesDao.selectEmployeesListBetween(begin, end);
 		//request에 list를 담는다
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/WEB-INF/views/employees/employeesListBetween.jsp").forward(request, response);;
+		request.getRequestDispatcher("/WEB-INF/views/employees/employeesListBetween.jsp").forward(request, response);
 	}
 
 }
