@@ -14,7 +14,7 @@ import model.EmployeesDao;
 import vo.Employees;
 
 
-@WebServlet("/employees/getEmployeesListOrderBy")
+@WebServlet("/employees/getEmployeesListOrderBy")//오름차순,내림차순 정렬 리스트 출력
 public class GetEmployeesListOrderByServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,9 +24,10 @@ public class GetEmployeesListOrderByServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
-		//order 받아오기
+		//dao 객체 생성
 		EmployeesDao employeesDao = new EmployeesDao();
 		String order = request.getParameter("order");
+		//오름차순일때 asc 내림차순일때 desc 
 		System.out.println("servlet order:>>"+order);
 		//list에 return값을 복사
 		List<Employees> list =employeesDao.selectEmployeesListOrderBy(order);

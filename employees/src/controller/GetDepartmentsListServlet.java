@@ -17,7 +17,7 @@ import vo.Departments;
 /**
  * Servlet implementation class GetDepartmentsListServlet
  */
-@WebServlet("/departments/getDepartmentsList")//url지정
+@WebServlet("/departments/getDepartmentsList")//url지정,부서 리스트페이지
 public class GetDepartmentsListServlet extends HttpServlet {
 	DepartmentsDao departmentsDao = null;
  	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +27,7 @@ public class GetDepartmentsListServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		
  		departmentsDao = new DepartmentsDao();
  		//list 객체 생성
  		List<Departments> list = new ArrayList<Departments>();

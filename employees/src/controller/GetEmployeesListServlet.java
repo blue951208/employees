@@ -20,7 +20,7 @@ import vo.Employees;
 public class GetEmployeesListServlet extends HttpServlet {
 		EmployeesDao employeesDao = null;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("getEmployeesListServlet 페이지 확인");
 		HttpSession session = request.getSession();
 		//로그인 상태X,session값이 없을때
 		if(session.getAttribute("sessionEmpNo")==null) {
@@ -28,6 +28,7 @@ public class GetEmployeesListServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		
 		//객체생성
 		employeesDao = new EmployeesDao();
 			int limit = 10;

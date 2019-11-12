@@ -17,7 +17,7 @@ import model.DeptEmpDao;
 import vo.Departments;
 
 
-@WebServlet("/deptEmp/getDeptEmpJoinList")
+@WebServlet("/deptEmp/getDeptEmpJoinList")//부서별 직원 리스트
 public class GetDeptEmpJoinList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -26,16 +26,18 @@ public class GetDeptEmpJoinList extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		
 		//------------------------------부서목록-------------------------------------------
 		DepartmentsDao departmentsDao = new DepartmentsDao();
- 		String paraDeptName = "Customer Service";
- 			if(request.getParameter("deptName")!=null) {
+ 		String paraDeptName = "Customer Service";//기본 default 값 customer service
+ 		//select에서 부서명 선택시 값을 받아올 경우
+ 			if(request.getParameter("deptName")!=null) { 
  				paraDeptName = request.getParameter("deptName");
  				System.out.println("para DeptName :"+paraDeptName);
  			}
  		//부서 list 객체 생성
  		List<Departments> dept = new ArrayList<Departments>();
- 		//list에 departmentsDao 메소드에 리턴값인 list를 복사
+ 		//list에 departmentsDao 메소드에 리턴값인 list를 복사,부서 list
  		dept = departmentsDao.selectDepartmentsDao();
  		System.out.println("dept :"+dept);
 		//-------------------------직원목록-----------------------------------------------
@@ -46,7 +48,7 @@ public class GetDeptEmpJoinList extends HttpServlet {
 		DeptEmpDao deptEmpDao = new DeptEmpDao();
 		int rowPerPage=10;
 		int currentPage=1;
-			if(request.getParameter("currentPage")!=null) {
+			if(request.getParameter("currentPage")!=null) {//받는 값이 있을 경우에는 받아온 값으로 변수에 복사
 				currentPage = Integer.parseInt(request.getParameter("currentPage"));
 				System.out.println("Servlet currentPage:>>"+currentPage);
 			}

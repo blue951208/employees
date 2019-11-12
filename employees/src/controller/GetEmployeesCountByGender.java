@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import model.EmployeesDao;
 
 
-@WebServlet("/employees/getEmployeesCountByGender")
+@WebServlet("/employees/getEmployeesCountByGender")//employees DB에 성별에 따른 직원 수
 public class GetEmployeesCountByGender extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

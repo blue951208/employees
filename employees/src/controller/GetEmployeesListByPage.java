@@ -14,18 +14,19 @@ import javax.servlet.http.HttpSession;
 import model.EmployeesDao;
 import vo.Employees;
 
-@WebServlet("/employees/getEmployeesListByPage")
+@WebServlet("/employees/getEmployeesListByPage")//페이징 적용,직원 리스트
 public class GetEmployeesListByPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		//로그인 상태X,session값이 없을때
 		if(session.getAttribute("sessionEmpNo")==null) {
-		response.sendRedirect(request.getContextPath()+"/login");
+			//session에서 sessionEmpNo키워드를 가진 변수에 값을 출력 했을때 null일 경우 
+		response.sendRedirect(request.getContextPath()+"/login");//login페이지로 이동
 			return;
 		}
 		//jsp에 넘길 list를 받기위해 list생성
 		List<Employees> list = new ArrayList<Employees>();
-		//jsp에서 넘기 currentPage값을 받는다
+		//jsp에서 넘긴 currentPage값을 받는다
 		int currentPage = 1;
 		int rowPerPage =10;
 		int rowPerIndex = 10;

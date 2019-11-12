@@ -30,8 +30,8 @@
 						<a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/employees/getEmployeesListServlet">사원 목록</a>
-					</li>
+						<a href="${pageContext.request.contextPath}/employees/GetEmployeesListServlet">사원 목록</a>
+					</li>											
 			
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a>

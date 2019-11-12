@@ -242,7 +242,9 @@ public class EmployeesDao {
 		//list 객체 생성
 		List<Employees> list = new ArrayList<Employees>();
 		//객체 선언
-		String sql = "select emp_no,first_name,last_name,hire_date,birth_date,gender from employees limit ?";
+		String sql = "select "
+				+ "emp_no,first_name,last_name,hire_date,birth_date,gender "
+				+ "from employees limit ?";
 
 			Connection conn = null;
 			PreparedStatement stmt = null;
