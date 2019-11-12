@@ -27,9 +27,11 @@ public class DepartmentsDao {
 				rs = stmt.executeQuery();
 				 while(rs.next()) {
 					 Map<String, Object> map = new HashMap<String, Object>();
+					 
 					 map.put("deptNo", rs.getString("de.dept_no"));
 					 map.put("deptName", rs.getString("d.dept_name"));
 					 map.put("cnt", rs.getInt("cnt"));
+					 
 					 list.add(map);
 				 }
 			}catch(Exception e) {
@@ -49,6 +51,7 @@ public class DepartmentsDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		//부서 번호,이름 출력 쿼리문 
 		String sql = "select dept_no,dept_name from departments";
 		//오류검사,
 			try {

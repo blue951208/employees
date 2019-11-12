@@ -17,9 +17,10 @@ import model.EmployeesDao;
 import model.SalariesDao;
 import model.TitlesDao;
 
-@WebServlet({"/","/index"})//url 처리(maping)
+@WebServlet({"/","/index"})//url 처리(maping), index페이지 (HOME 화면) 각테이블에 행에수를 출력
 public class IndexServlet extends HttpServlet {
-	private EmployeesDao employeesDao; //dao객체 선언
+	 //dao객체 선언
+	private EmployeesDao employeesDao;
 	private DepartmentsDao departmentsDao;
 	private TitlesDao titlesDao;
 	private SalariesDao salariesDao;
@@ -32,14 +33,15 @@ public class IndexServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
-		//model 호출
+		
+		//new 객체 생성 
 		employeesDao = new EmployeesDao();
 		departmentsDao = new DepartmentsDao();
 		titlesDao = new TitlesDao();
 		salariesDao = new SalariesDao();
 		deptEmpDao = new DeptEmpDao();
 		deptManagerDao = new DeptManagerDao();
-		
+		//method에 return 값을 변수에 복사
 			int employeesRowCount = employeesDao.selectEmployeesCount();
 			int minEmpNo = employeesDao.selectEmpNo("min");
 			int maxEmpNo = employeesDao.selectEmpNo("max");
@@ -48,6 +50,7 @@ public class IndexServlet extends HttpServlet {
 			int salariesRowCount = salariesDao.selectSalariesCount();
 			int deptEmpRowCount = deptEmpDao.selectDeptEmpCount();
 			int deptManagerRowCount = deptManagerDao.selectDeptManagerCount();
+		
 		//request Attribute안에 값을 담아 보냄
 		request.setAttribute("minEmpNo", minEmpNo);
 		request.setAttribute("maxEmpNo", maxEmpNo);

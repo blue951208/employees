@@ -17,7 +17,12 @@ public class SalariesDao {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
-			String sql = "select count(salary),sum(salary),avg(salary),max(salary),min(salary),std(salary) from salaries";
+			String sql = "select count(salary),"
+							+"sum(salary),"//합계
+							+"avg(salary),"//평균
+							+"max(salary),"//최대값
+							+"min(salary),"//최소값
+							+"std(salary) from salaries";//표준편차
 				try {
 					conn = DBHelper.getConnection();
 					stmt = conn.prepareStatement(sql);

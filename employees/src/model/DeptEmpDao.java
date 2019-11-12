@@ -69,7 +69,7 @@ public class DeptEmpDao {
 	}
 	public int selectDeptEmpCount() {//count를 리턴 메소드
 		//쿼리문 ,변수,객체 선언
-		final String sql="select count(*) from dept_emp";
+		final String sql="select count(*) from dept_emp";//dept_emp테이블에 행의 수 출력
 		int count=0;
 		Connection conn = null;
 		PreparedStatement stmt = null;

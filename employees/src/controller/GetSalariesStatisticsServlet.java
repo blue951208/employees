@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import model.SalariesDao;
 
 
-@WebServlet("/salaries/getSalariesStatistics")
+@WebServlet("/salaries/getSalariesStatistics")//연봉 통계 수치를 출력
 public class GetSalariesStatisticsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

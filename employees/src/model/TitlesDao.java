@@ -15,7 +15,7 @@ public class TitlesDao {
 	public List<Titles> selectTitlesListDistinct(){
 		//리턴값을 위한 list생성
 		List<Titles> list = new ArrayList<Titles>();
-		String sql = "select distinct title from titles";
+		String sql = "select distinct title from titles";//title 중복값 제외 출력
 		//객체 초기화
 		Connection conn = null;
 		PreparedStatement stmt = null;

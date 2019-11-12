@@ -15,7 +15,7 @@ import model.TitlesDao;
 import vo.Titles;
 
 
-@WebServlet("/titles/getTitlesListDistinct")
+@WebServlet("/titles/getTitlesListDistinct")//업무 목록 , 중복 제거
 public class GetTitlesListDistinctServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

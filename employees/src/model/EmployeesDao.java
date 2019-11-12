@@ -69,7 +69,9 @@ public class EmployeesDao {
 	public List<Employees> selectEmployeeListByPage(int currentPage,int rowPerPage){
 		//return할 list생성
 		List<Employees> list = new ArrayList<Employees>();
-		String sql = "select emp_no,gender,birth_date,hire_date,first_name,last_name from employees limit ?,?";
+		String sql = "select "
+				+"emp_no,gender,birth_date,hire_date,first_name,last_name "
+				+"from employees limit ?,?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -134,7 +136,10 @@ public class EmployeesDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		//begin~end사이에 list 가져오기
-		String sql ="select emp_no,last_name,first_name,gender,hire_date,birth_date from employees where emp_no between ? and ? order by emp_no asc";
+		String sql ="select "
+				+"emp_no,last_name,first_name,gender,hire_date,birth_date "
+				+"from employees where emp_no "
+				+"between ? and ? order by emp_no asc";
 			try {
 				conn = DBHelper.getConnection();
 				stmt = conn.prepareStatement(sql);
@@ -198,7 +203,9 @@ public class EmployeesDao {
 		//객체 생성,sql설정
 		String sql=null;
 		if(order.equals("asc")) {//order가asc일때는 오름차순 
-			sql = "select emp_no,last_name,first_name,birth_date,hire_date,gender from employees order by first_name asc limit 50";
+			sql = "select "
+					+"emp_no,last_name,first_name,birth_date,hire_date,gender "
+					+"from employees order by first_name asc limit 50";
 		}else if(order.equals("desc")) {
 			sql = "select emp_no,last_name,first_name,birth_date,hire_date,gender from employees order by first_name desc limit 50";
 		}System.out.println("sql==>"+sql);
@@ -283,7 +290,7 @@ public class EmployeesDao {
 	}
 	public int selectEmployeesCount() {//count를 리턴 메소드
 		//쿼리문 ,변수,객체 선언
-		final String sql="select count(*) from employees";
+		final String sql="select count(*) from employees";//테이블 전체 행의 수 출력
 		int count=0;
 		Connection conn = null;
 		PreparedStatement stmt = null;
