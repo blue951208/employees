@@ -33,7 +33,7 @@ public class GetTitlesListDistinctServlet extends HttpServlet {
 			//request에 list값을 담는다
 			request.setAttribute("list", list);
 			//jsp로 forward
-			request.getRequestDispatcher("/WEB-INF/views/titles/titlesListDistinct.jsp").forward(request, response);;
+			request.getRequestDispatcher("/WEB-INF/views/titles/titlesListDistinct.jsp").forward(request, response);
 	}
 
 }
