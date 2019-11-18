@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div>
-				<a href="${pageContext.request.contextPath}">HOME</a>
+				<a href="${pageContext.request.contextPath}">HOME</a><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 			</div>
 		<div class="row">
 			<div class="col-sm-4">

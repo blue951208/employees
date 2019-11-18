@@ -20,7 +20,7 @@
 <body>	
 	<h1>부서별 사원 목록</h1>
 			<div>
-				<h2><a href="${pageContext.request.contextPath}">HOME</a></h2>
+				<h2><a href="${pageContext.request.contextPath}">HOME</a></h2><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 			</div><!--  메인 페이지로 이동 -->
 <div class="row">
 			<div class="col-sm-4">

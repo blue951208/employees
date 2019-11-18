@@ -19,7 +19,7 @@
 
 </head>
 <body>
-	<h1>OrderBy</h1>
+	<h1>OrderBy</h1><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	<div>
 				<a href="${pageContext.request.contextPath}">HOME</a>
 			</div>
