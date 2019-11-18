@@ -17,7 +17,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Index</h1>
+	<h1>Index</h1><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 			<div>
 				<a href="${pageContext.request.contextPath}">HOME</a>
 			</div>

@@ -19,7 +19,7 @@
 
 </head>
 <body>
-	<h1>업무 목록(중복 제거)</h1>
+	<h1>업무 목록(중복 제거)</h1><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 	<div>
 				<a href="${pageContext.request.contextPath}">HOME</a>
 			</div>

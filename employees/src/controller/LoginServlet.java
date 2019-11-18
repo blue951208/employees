@@ -22,7 +22,8 @@ public class LoginServlet extends HttpServlet {
 	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
 	}
 	//login action 
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			int empNo = Integer.parseInt(request.getParameter("empNo"));
