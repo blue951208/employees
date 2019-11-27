@@ -24,6 +24,7 @@ public class GetDepartmentsListServlet extends HttpServlet {
  		HttpSession session = request.getSession();
 		//로그인 상태X,session값이 없을때
 		if(session.getAttribute("sessionEmpNo")==null) {
+			//로그인 페이지로 이동
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}

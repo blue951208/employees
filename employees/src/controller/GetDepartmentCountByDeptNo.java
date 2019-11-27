@@ -19,8 +19,9 @@ import model.DepartmentsDao;
 public class GetDepartmentCountByDeptNo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//로그인 상태X,session값이 없을때
+		//로그인 상태X,session에 sessionEmpNo에 값이 null일 경우
 		if(session.getAttribute("sessionEmpNo")==null) {
+		//로그인 페이지로 이동한다.
 		response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
