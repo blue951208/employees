@@ -38,6 +38,7 @@ public class DeptEmpDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		//직원 이름,부서이름,입사일,퇴사일을 10개씩 가져온다
 		String sql = "select concat(e.first_name,'',e.last_name),d.dept_name,de.from_date,de.to_date "
 				+ "from dept_emp de inner join employees e "
 				+"inner join departments d "
@@ -53,6 +54,7 @@ public class DeptEmpDao {
 			System.out.println("Dao rs:>>"+rs);
 			while(rs.next()) {
 				Map<String, Object> map = new HashMap<String, Object>();
+				//map에 키워드와 값을 저장한다.
 				map.put("name", rs.getString("concat(e.first_name,'',e.last_name)"));
 				map.put("deptName",rs.getString("d.dept_name"));
 				map.put("fromDate",rs.getString("from_date"));

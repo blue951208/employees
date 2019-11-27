@@ -53,8 +53,9 @@ public class DepartmentsDao {
 		ResultSet rs = null;
 		//부서 번호,이름 출력 쿼리문 
 		String sql = "select dept_no,dept_name from departments";
-		//오류검사,
+		//예외 처리
 			try {
+				//db 접속,쿼리 실행
 				Class.forName("org.mariadb.jdbc.Driver");
 				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
 				System.out.println(conn);
