@@ -17,10 +17,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Index</h1><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-			<div>
-				<a href="${pageContext.request.contextPath}">HOME</a>
-			</div>
+	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
+		<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+			
 		<div class="row">
 			<div class="col-sm-4">
 				<ul>
@@ -59,12 +58,12 @@
 			</div>
 		<div class="col-sm-7 container">
 			<form method="post" action="${pageContext.request.contextPath}/employees/getEmployeesListBetween">
-				<input type="number" name="begin"> ~ <input type="number" name="end">
-					<button type="submit">사원 목록</button>
+				<input type="number" name="begin" class="form-control mb-2 mr-sm-2"> ~ <input type="number" name="end" class="form-control mb-2 mr-sm-2">
+					<button type="submit" class="btn btn-primary">사원 목록</button>
 				(${minEmpNo}10000~${maxEmpNo})
 			</form>
 			<br>
-			<table class="table" border = "2">
+			<table class="table table-primary" border = "2">
 				<tr>
 					<td>부서 </td>
 					<td>${departmentsRowCount}</td>

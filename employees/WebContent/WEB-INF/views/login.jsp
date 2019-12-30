@@ -7,27 +7,28 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<div class="container">
-		<h1>로그인 </h1>
+		<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
 			<form method="post" action="${pageContext.request.contextPath}/login">
-				
+
 					<label>firstName:</label>
 				<div>
-					<input type="text" name="firstName" value='s'>
+					<input type="text" name="firstName" class="form-control" value='s'>
 				</div>
 				
 					<label>lastName:</label>
 				<div>
-					<input type="text" name="lastName" value='s'>
+					<input type="text" name="lastName" class="form-control" value='s'>
 				</div>
 				
 					<label>empNo:</label>
 				<div>
-					<input type="number" name="empNo" value=1>
+					<input type="number" name="empNo" class="form-control" value=1>
 				</div>
 				<div>
-					<button type="submit">Login</button>
+					<button type="submit" class="btn btn-outline-primary btn-block">Login</button>
 				</div>
 			</form>
 	</div>

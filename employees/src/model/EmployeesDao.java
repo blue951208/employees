@@ -215,7 +215,7 @@ public class EmployeesDao {
 			//오류검사
 			try {//db접속 + 쿼리문 입력,실행
 				Class.forName("org.mariadb.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
+				conn = DBHelper.getConnection();
 				stmt = conn.prepareStatement(sql);
 				rs = stmt.executeQuery();
 					//employees에 값을 set
@@ -259,7 +259,7 @@ public class EmployeesDao {
 			//오류검사
 			try {//db접속 + 쿼리문 입력,실행
 				Class.forName("org.mariadb.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
+				conn = DBHelper.getConnection();
 				stmt = conn.prepareStatement(sql);
 						//?값 입력
 					stmt.setInt(1, limit);
@@ -298,7 +298,7 @@ public class EmployeesDao {
 			//오류검사,db접속
 		try {
 				Class.forName("org.mariadb.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
+				conn = DBHelper.getConnection();
 				stmt = conn.prepareStatement(sql);
 				rs = stmt.executeQuery();
 			if(rs.next()) {

@@ -18,12 +18,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
+<style>
+
+	thead{
+		background-color: #58ACFA;
+	}
+	.custom-select{
+		width:80px;
+	}
+</style>
 <body>
-		<h1>사원 목록</h1>
-			<div>
-				<a href="${pageContext.request.contextPath}">HOME</a><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-			</div><!--  메인 페이지로 이동 -->
-		<div class="row">
+	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
+			<!--  메인 페이지로 이동 -->
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	<div class="row">
 			<div class="col-sm-4">
 				<ul>
 					<li>
@@ -54,20 +62,23 @@
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
 					</li>
-				</ul><!-- 메뉴  -->
+					<li>
+						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">부서별 인원</a>
+					</li>
+				</ul>
 			</div>
-		<div class="col-sm-7 container">
+			<div class="col-sm-7 container">
 			<form method="get" action="<%=request.getContextPath()%>/employees/GetEmployeesListServlet">
-				<select name="limit">
+				<select name="limit" class="custom-select">
 					<option value="10">10</option>
 					<option value="20">20</option>
 					<option value="30">30</option>
 					<option value="40">40</option>
 					<option value="50">50</option>
 				</select>
-				<button type="submit">확인</button>
+				<button type="submit" class="btn btn-primary">확인</button>
 			</form>
-		<table border="1">
+		<table border="1" class="table">
 			<thead>
 				<tr>
 					<td>사원 번호></td>

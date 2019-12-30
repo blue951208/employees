@@ -19,11 +19,10 @@
 
 </head>
 <body>
-	<h1>업무 목록(중복 제거)</h1><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-	<div>
-				<a href="${pageContext.request.contextPath}">HOME</a>
-			</div>
-		<div class="row">
+	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
+			<!--  메인 페이지로 이동 -->
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	<div class="row">
 			<div class="col-sm-4">
 				<ul>
 					<li>
@@ -53,6 +52,9 @@
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">부서별 인원</a>
 					</li>
 				</ul>
 			</div>

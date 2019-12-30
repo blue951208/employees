@@ -18,12 +18,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
+<style>
+	thead{
+		background-color: #58ACFA;
+	}
+</style>
 <body>
-	<h1>부서별 인원</h1>
-		<div>
-				<a href="${pageContext.request.contextPath}">HOME</a><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-			</div>
-		<div class="row">
+	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
+			<!--  메인 페이지로 이동 -->
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	<div class="row">
 			<div class="col-sm-4">
 				<ul>
 					<li>
@@ -31,7 +35,7 @@
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/GetEmployeesListServlet">사원 목록</a>
-					</li>											
+					</li>
 			
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListOrderBy?order=asc">오름차순(limit50)</a>
@@ -54,10 +58,13 @@
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
 					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">부서별 인원</a>
+					</li>
 				</ul>
 			</div>
 		<div class="col-sm-7 container">
-			<table border="1">
+			<table border="1" class="table">
 				<thead>
 					<tr>
 						<th>부서 번호</th>

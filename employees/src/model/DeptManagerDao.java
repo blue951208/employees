@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import db.DBHelper;
+
 public class DeptManagerDao{
 	public int selectDeptManagerCount() {//count를 리턴 메소드
 		//쿼리문 ,변수,객체 선언
@@ -16,7 +18,7 @@ public class DeptManagerDao{
 			//오류검사,db접속
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/employees","root","java1234");
+			conn = DBHelper.getConnection();
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			if(rs.next()) {

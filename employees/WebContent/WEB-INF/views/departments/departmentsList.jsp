@@ -16,15 +16,19 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+<style>
+	thead{
+		background-color: #58ACFA;
+	}
+</style>
 </head>
 <body>
-	<h1>부서목록</h1>
+	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
 		<div>
-				<a href="${pageContext.request.contextPath}">HOME</a><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 			</div>
 		<div class="row">
-			<div class="col-sm-4">
+	<div class="col-sm-4">
 				<ul>
 					<li>
 						<a href="${pageContext.request.contextPath}/departments/getDepartmentsList">부서 목록</a>
@@ -54,10 +58,13 @@
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
 					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">부서별 인원</a>
+					</li>
 				</ul>
 			</div>
 		<div class="col-sm-7 container">
-			<table border="1">
+			<table border="1" class="table">
 			<thead>
 				<tr>
 					<td>부서 번호</td>

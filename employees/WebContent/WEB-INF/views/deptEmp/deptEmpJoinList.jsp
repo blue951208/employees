@@ -17,12 +17,20 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+
+	thead{
+		background-color: #58ACFA;
+	}
+	.custom-select{
+		width:200px;
+	}
+</style>
 <body>	
-	<h1>부서별 사원 목록</h1>
-			<div>
-				<h2><a href="${pageContext.request.contextPath}">HOME</a></h2><a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-			</div><!--  메인 페이지로 이동 -->
-<div class="row">
+	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
+			<!--  메인 페이지로 이동 -->
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	<div class="row">
 			<div class="col-sm-4">
 				<ul>
 					<li>
@@ -53,20 +61,23 @@
 					<li>
 						<a href="${pageContext.request.contextPath}/employees/getEmployeesListByPage">사원정보 (10개씩 페이징)</a>
 					</li>
-				</ul><!-- 메뉴  -->
+					<li>
+						<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList">부서별 인원</a>
+					</li>
+				</ul>
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-7">
 				<!-- 부서를 클릭할 수 있는 select,클릭하면 Servlet으로 데이터 전송 -->
 				<form method="get" action="<%=request.getContextPath()%>/deptEmp/getDeptEmpJoinList">
-					 <select name="deptName">
+					 <select name="deptName" class="custom-select">
 						<c:forEach var="dept" items="${dept}">
 							<option value="${dept.deptName}">${dept.deptName}</option>
 						</c:forEach>				
 						<div></div>
 					</select> 
-					<button type="submit">Check</button>
+					<button type="submit" class="btn btn-primary">Check</button>
 				</form>
-					<table border="1">
+					<table border="1" class="table">
 						<thead>
 							<tr>
 								<td>직원 이름</td>
@@ -93,6 +104,7 @@
 					<a href="${pageContext.request.contextPath}/deptEmp/getDeptEmpJoinList?currentPage=${currentPage+1}">다음</a>
 				</c:if>
 			</div>
+			<div class="col-sm-1"></div>
 </div>
 		
 </body>
